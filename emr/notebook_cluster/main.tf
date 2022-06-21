@@ -133,6 +133,13 @@ resource "aws_emr_cluster" "cluster" {
     }
   }
 
+  # Auto scaling 
+  autoscaling_policy      = var.autoscaling_policy
+  autoscaling_role        = var.autoscaling_role
+  auto_termination_policy = {
+    idle_timeout = var.idle_timeout
+  }
+
   tags = {
     notebook                                   = "true",
     "tecton-accessible:${var.deployment_name}" = "true",

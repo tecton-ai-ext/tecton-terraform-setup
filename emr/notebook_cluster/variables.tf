@@ -76,3 +76,18 @@ variable "glue_account_id" {
   type        = string
   description = "AWS account id containing the AWS Glue Catalog for cross-account access"
 }
+variable "idle_timeout" {
+  type         = number
+  default      = 3600
+  description  = "Idle time in seconds after which a cluster automatically terminates."
+}
+variable "autoscaling_role" {
+  type         = string
+  default      = null # "EMR_AutoScaling_DefaultRole"
+  description  = "IAM role for automatic scaling policies." 
+}
+variable "autoscaling_policy" {
+  type         = string
+  default      = null # Must have both scale out/in https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html
+  description  = "String containing the EMR Auto Scaling Policy JSON."
+}
